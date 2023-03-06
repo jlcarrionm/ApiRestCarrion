@@ -12,6 +12,9 @@ import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/materia
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -25,7 +28,12 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+
+
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule
 
   ],
   exports:[
@@ -38,7 +46,19 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    MatCardModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule
+
   ]
 
 })

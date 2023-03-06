@@ -22,6 +22,7 @@ import { CursoService } from './cursos/services/cursos.service';
 import { NoEncontradoComponent } from './core/components/no-encontrado/no-encontrado.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { InicioComponent } from './core/components/inicio/inicio.component';
 
 
 
@@ -29,23 +30,17 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    NoEncontradoComponent
+    NoEncontradoComponent,
+    InicioComponent
   ],
 
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-
     FormsModule,
-
     AppRountingModule,
-    CursosModule,
-    AlumnosModule,
     CoreModule,
     SharedModule
-
-
-
   ],
   providers: [
 

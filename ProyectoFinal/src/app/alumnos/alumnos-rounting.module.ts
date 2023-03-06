@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
+import { SesionGuard } from '../core/guards/sesion.guard';
 
 
 const routes: Routes = [
-  { path: 'alumnos', children: [
+  { path: '', canActivateChild: [SesionGuard],children: [
     { path: 'listaralumnos', component: ListaAlumnosComponent },
 
   ]}
