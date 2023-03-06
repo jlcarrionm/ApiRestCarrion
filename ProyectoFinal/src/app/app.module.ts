@@ -29,9 +29,8 @@ import { InicioComponent } from './core/components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NoEncontradoComponent,
-    InicioComponent
+    AppComponent
+
   ],
 
   imports: [

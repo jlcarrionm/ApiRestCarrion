@@ -1,6 +1,8 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SesionService } from './core/services/sesion.service';
+import { Sesion } from './models/sesion';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   mobileQuery: MediaQueryList;
+
 
   /*  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
   */
@@ -24,7 +27,10 @@ export class AppComponent {
 
    private _mobileQueryListener: () => void;
 
-   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router: Router ) {
+   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router: Router,
+
+    private sesion: SesionService ) {
+
      this.mobileQuery = media.matchMedia('(max-width: 600px)');
      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
      this.mobileQuery.addListener(this._mobileQueryListener);
@@ -38,6 +44,15 @@ export class AppComponent {
    ngOnDestroy(): void {
      this.mobileQuery.removeListener(this._mobileQueryListener);
    }
+
+   logout(){
+    let sesionLogout: Sesion = {
+      sesionActiva: false,
+      usuarioActivo: undefined
+    }
+    this.sesion.logout(sesionLogout);
+    this.router.navigate(['auth/login']);
+  }
 
    /* shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host); */
  }

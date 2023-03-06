@@ -33,11 +33,18 @@ export class ListaCursosComponent implements OnInit, OnDestroy{
   ngOnInit() {
     this.cursos$ = this.cursoService.obtenerCursosObservable$();
 
+
+
     this.suscripcion = this.cursos$
       .pipe(takeUntil(this.destroy$))
       .subscribe(cursos => this.cursos = cursos);
+//console.log('xxxx', this.cursos );
 
-    this.numberCurso = this.cursos.length;
+ this.cursos$.subscribe((value) => {
+
+  this.numberCurso = value.length;
+});
+
 
    /*  of(this.cursos).subscribe((cursos)=> {
       console.log('Obtenido desde el Of', cursos)
@@ -75,11 +82,16 @@ export class ListaCursosComponent implements OnInit, OnDestroy{
 
     }
 
+    eliminarCurso(curso: Cursos){
+      this.cursoService.eliminarCurso(curso).subscribe((curso: Cursos) => {
+        alert(`${curso.nombre} eliminado`);
+        this.cursos$ = this.cursoService.obtenerCursosObservable$();
+      });
+    }
 
   busqueda(){
-    this.cursoService.obtenerCurso(this.comision).then((cursosObtenidos: Cursos[]) =>
-    console.log('CUrsoObtenido', cursosObtenidos))
 
+    this.cursos$ =  this.cursoService.busquedaCurso(this.comision);
    }
 
   ngOnDestroy(): void{
