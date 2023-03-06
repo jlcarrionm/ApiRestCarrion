@@ -35,10 +35,9 @@ export class ListaCursosComponent implements OnInit, OnDestroy{
 
 
 
-    this.suscripcion = this.cursos$
+   /*  this.suscripcion = this.cursos$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(cursos => this.cursos = cursos);
-//console.log('xxxx', this.cursos );
+      .subscribe(cursos => this.cursos = cursos); */
 
  this.cursos$.subscribe((value) => {
 
@@ -92,6 +91,12 @@ export class ListaCursosComponent implements OnInit, OnDestroy{
   busqueda(){
 
     this.cursos$ =  this.cursoService.busquedaCurso(this.comision);
+
+    this.cursos$.subscribe((value) => {
+
+      console.log('busqueda',value)
+    });
+
    }
 
   ngOnDestroy(): void{
